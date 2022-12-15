@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package image_stream;
+
+service ImageStream {
+    rpc Stream (stream StreamImageRequest) returns (StreamImageResponse) {}
+}
+
+message StreamImageRequest {
+    ImageInfo info = 1;
+    bytes image_chunk = 2;
+}
+
+message StreamImageResponse {
+    string id = 1;
+    uint32 size = 2;
+}
